@@ -1,16 +1,16 @@
 <header>
-  <nav class="flex justify-between px-4 py-3 mb-4 text-white bg-gray-800 navbar nav align-center">
+  <nav class="fixed top-0 flex justify-between w-full px-4 py-3 mb-4 text-white bg-gray-800 navbar nav align-center">
     <h1 class="text-4xl font-extralight">Bookotopia</h1>
     <div class="flex align-center">
       <span class="self-center cursor-pointer hover:text-gray-300" (click)="isShowCart=!isShowCart"> Cart
-        ({{getCart().length}})</span>
+        ({{getTotalItems()}})</span>
     </div>
   </nav>
   <ng-container *ngIf="isShowCart">
     <app-cart></app-cart>
   </ng-container>
 </header>
-<main class="px-4">
+<main class="px-4 mt-32">
   <app-books></app-books>
 </main>
 <footer class="px-4 py-20 mt-20 text-center text-white border-t-[1px] border-gray-800">

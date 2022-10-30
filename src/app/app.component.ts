@@ -12,4 +12,7 @@ export class AppComponent {
   getCart() {
     return this.cartService.getCart();
   }
+  getTotalItems() {
+    return this.cartService.getTotalItems();
+  }
 }
