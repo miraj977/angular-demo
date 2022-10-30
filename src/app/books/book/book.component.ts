@@ -28,6 +28,6 @@ export class BookComponent implements OnInit {
     this.cartService.addToCart(this.book);
     this.addTimer = setTimeout(() => {
       this.isAdding = false;
-    }, 1200);
+    }, 600);
   }
 }
