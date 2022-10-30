@@ -1,0 +1,28 @@
+<div
+  class="fixed right-0 w-full max-w-sm p-4 text-white border-t-[1px] top-[64px] bg-slate-800 rounded-bl-md rounded-br-md border-cyan-50">
+  <ng-container *ngIf="!getCart().length">Your cart is empty</ng-container>
+  <ng-container *ngIf="getCart().length">
+    <ul>
+      <ng-container *ngFor="let item of getCart()">
+        <li class="flex justify-between w-full py-2 align-center">
+          <span>{{item.name}}</span>
+          <div class="w-[80px] flex justify-between align-center">
+            <button (click)="removeCartItem(item)" class="px-2 text-white bg-red-500 rounded-sm">-</button>
+            <span class="px-2">{{item.count}}</span>
+            <button (click)="addToCart(item)" class="px-2 text-white bg-blue-500 rounded-sm">+</button>
+          </div>
+        </li>
+      </ng-container>
+    </ul>
+    <div class="border-t-[1px] border-cyan-50 flex flex-col mt-2 pt-2">
+      <p class="flex justify-between align-center">
+        <span>Total items:</span>
+        <span>{{getTotalItems()}}</span>
+      </p>
+      <p class="flex justify-between align-center">
+        <span>Total price:</span>
+        <span>{{getTotalPrice()|currency:'AUD'}}</span>
+      </p>
+    </div>
+  </ng-container>
+</div>

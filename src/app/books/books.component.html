@@ -1,0 +1,19 @@
+<h2 class="mt-16 text-4xl text-center text-white font-extralight">Programming Books</h2>
+
+<div class="flex justify-end w-full">
+  <button [disabled]="isDisabled" class="mt-5 btn btn-secondary" (click)="isShowing = !isShowing">
+    <ng-container *ngIf="isShowing">Hide Books</ng-container>
+    <ng-container *ngIf="!isShowing">Show Books</ng-container>
+  </button>
+</div>
+<ng-container *ngIf="isShowing">
+  <ul class="flex flex-wrap justify-center gap-5 my-8">
+    <ng-container *ngFor="let book of books">
+      <app-book [book]="book">
+      </app-book>
+    </ng-container>
+  </ul>
+</ng-container>
+<ng-container *ngIf="!isShowing">
+  <p class="my-20 text-4xl text-center text-white font-extralight">[Content hidden]</p>
+</ng-container>

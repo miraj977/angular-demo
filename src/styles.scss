@@ -1,1 +1,26 @@
 /* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+  background: #111;
+}
+
+@layer components {
+  .btn {
+    @apply px-5 py-2.5 font-extralight text-sm  rounded-sm  transition-colors duration-200 ease-in-out;
+    &:disabled {
+      cursor: not-allowed !important;
+      background-color: #ccc !important;
+      color: #0e0d0d4d !important;
+    }
+  }
+  .btn-primary {
+    @apply text-white bg-black hover:bg-slate-700;
+  }
+  .btn-secondary {
+    @apply text-white bg-slate-700 hover:bg-slate-800;
+  }
+}

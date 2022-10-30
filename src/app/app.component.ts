@@ -1,10 +1,15 @@
 import { Component } from '@angular/core';
+import { CartService } from './services/cart.service';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  templateUrl: 'app.component.html',
+  styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
-  title = 'angular-app';
+  constructor(private cartService: CartService) {}
+  isShowCart: boolean = false;
+  getCart() {
+    return this.cartService.getCart();
+  }
 }
