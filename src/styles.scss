@@ -23,4 +23,10 @@ html {
   .btn-secondary {
     @apply text-white bg-slate-700 hover:bg-slate-800;
   }
+  .flex-center {
+    @apply flex items-center justify-center;
+  }
+  .flex-between {
+    @apply flex items-center justify-between;
+  }
 }

@@ -4,22 +4,24 @@
   <ng-container *ngIf="getCart().length">
     <ul>
       <ng-container *ngFor="let item of getCart()">
-        <li class="flex justify-between w-full py-2 align-center">
-          <span>{{item.name}}</span>
-          <div class="w-[80px] flex justify-between align-center">
-            <button (click)="removeCartItem(item)" class="px-2 text-white bg-red-500 rounded-sm">-</button>
+        <li class="flex-between w-full py-2">
+          <span>{{item.name}} ({{item.price | currency:'AUD'}})</span>
+          <div class="w-[80px] flex-center">
+            <button (click)="removeCartItem(item)"
+              class="flex-center h-[20px] w-[20px] text-white bg-red-500 rounded-sm">-</button>
             <span class="px-2">{{item.count}}</span>
-            <button (click)="addToCart(item)" class="px-2 text-white bg-blue-500 rounded-sm">+</button>
+            <button (click)="addToCart(item)"
+              class="flex-center h-[20px] w-[20px] text-white bg-blue-500 rounded-sm">+</button>
           </div>
         </li>
       </ng-container>
     </ul>
     <div class="border-t-[1px] border-cyan-50 flex flex-col mt-2 pt-2">
-      <p class="flex justify-between align-center">
+      <p class="flex-between">
         <span>Total items:</span>
         <span>{{getTotalItems()}}</span>
       </p>
-      <p class="flex justify-between align-center">
+      <p class="flex-between">
         <span>Total price:</span>
         <span>{{getTotalPrice()|currency:'AUD'}}</span>
       </p>
