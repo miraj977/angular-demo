@@ -1,0 +1,30 @@
+<div class="items-start h-screen mt-[20vh] flex-center">
+  <form class="min-w-full px-4 py-6 text-white drop-shadow-md bg-slate-900 rounded-xl md:min-w-[450px]"
+    #registerForm="ngForm" (ngSubmit)="submit()">
+    <div>
+      <label for="email" class="text-sm">Email</label>
+      <input type="email" class="input" name="email" placeholder="Email" [(ngModel)]="form.email" #email="ngModel"
+        required />
+      <p *ngIf="email.invalid && email.touched" class="input-error">Email field must be
+        valid</p>
+    </div>
+    <div>
+      <label for="password" class="text-sm">Password</label>
+      <input type="password" class="input" name="password" placeholder="Password" [(ngModel)]="form.password"
+        #password="ngModel" autocomplete />
+      <p *ngIf="password.invalid && password.touched" class="input-error">Password field
+        must be valid</p>
+    </div>
+    <div>
+      <label for="confirm-password" class="text-sm">Confirm Password</label>
+      <input type="password" class="input" name="confirmpassword" placeholder="Confirm Password"
+        [(ngModel)]="form.confirmPassword" #confirmPassword="ngModel" autocomplete />
+      <p *ngIf="confirmPassword.touched && form.password!=form.confirmPassword" class="input-error">Password didn't
+        match</p>
+    </div>
+    <button
+      [disabled]="registerForm.form.invalid && registerForm.form.touched && form.password !== form.confirmPassword"
+      class="w-full h-12 mt-2.5 text-black bg-yellow-500 rounded-sm btn" type="submit">Register</button>
+  </form>
+  {{form.password}} {{form.confirmPassword}}
+</div>

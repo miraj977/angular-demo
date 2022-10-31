@@ -1,7 +1,9 @@
 <header>
-  <nav class="fixed top-0 flex-between w-full px-4 py-3 mb-4 text-white bg-gray-800 navbar nav">
-    <h1 class="text-4xl font-extralight">Bookotopia</h1>
-    <div class="flex-center">
+  <nav class="fixed top-0 w-full p-4 mb-4 text-white bg-gray-800 flex-between font-extralight">
+    <a href="/" class="text-2xl ">Bookotopia</a>
+    <div class="gap-5 flex-center">
+      <a href="/login" class="hover:text-yellow-400">Sign in</a>
+      <a href="/register" class="hover:text-yellow-400">Register</a>
       <span [ngClass]="{'self-center cursor-pointer hover:text-gray-300':true,
       'text-yellow-600 hover:text-yellow-700 border-b-[1px] border-yellow-600': isShowCart }"
         (click)="isShowCart=!isShowCart"> Cart
@@ -13,7 +15,7 @@
   </ng-container>
 </header>
 <main class="px-4 mt-32 min-h-[70vh]">
-  <app-books></app-books>
+  <router-outlet></router-outlet>
 </main>
 <footer class="px-4 py-20 mt-20 text-center text-white border-t-[1px] border-gray-800">
   <a target="_blank" href="http://mirajaryal.com"

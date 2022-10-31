@@ -29,4 +29,10 @@ html {
   .flex-between {
     @apply flex items-center justify-between;
   }
+  .input {
+    @apply w-full h-12 px-4 my-2.5 rounded-sm text-black outline-none text-sm;
+  }
+  .input-error {
+    @apply p-4 py-3 my-1 text-sm font-light text-red-700 bg-red-300 rounded-sm;
+  }
 }

@@ -1,0 +1,23 @@
+<div class="items-start h-screen mt-[20vh] flex-center">
+  <form #loginForm="ngForm" (ngSubmit)="submit()"
+    class="min-w-full px-4 py-6 text-white drop-shadow-md bg-slate-900 rounded-xl md:min-w-[450px]">
+    <p *ngIf="loginFailed" class="input-error">Login failed. Incorrect username or password.</p>
+    <div>
+      <label for="email" class="text-sm">Email</label>
+      <input type="email" class="input" name="email" placeholder="Email" [(ngModel)]="form.email" #email="ngModel"
+        required />
+      <p *ngIf="email.invalid && email.touched" class="input-error">Email field must be
+        valid</p>
+    </div>
+    <div>
+      <label for="password" class="text-sm">Password</label>
+      <input type="password" class="input" name="password" #password="ngModel" placeholder="Password"
+        [(ngModel)]="form.password" autocomplete required="" />
+      <p *ngIf="password.invalid && password.touched" class="input-error">Password field
+        must be valid</p>
+    </div>
+    <button [disabled]="loginForm.form.invalid && loginForm.form.touched"
+      class="w-full h-12 mt-2.5 bg-black rounded-sm btn" type="submit">Sign
+      In</button>
+  </form>
+</div>
