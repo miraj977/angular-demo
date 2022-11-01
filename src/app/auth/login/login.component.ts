@@ -14,11 +14,21 @@ export class LoginComponent implements OnInit {
 
   form: Form = { email: '', password: '' };
   loginFailed: boolean = false;
+  isEmpty: boolean = false;
 
-  submit() {
-    this.loginFailed = this.authService.login(this.form);
-  }
   loading() {
     return this.authService.loading();
+  }
+
+  empty() {
+    return this.isEmpty;
+  }
+
+  submit() {
+    if (this.form.email === '' || this.form.password === '') {
+      this.isEmpty = true;
+      return;
+    }
+    this.loginFailed = this.authService.login(this.form);
   }
 }

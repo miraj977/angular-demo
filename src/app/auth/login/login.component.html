@@ -21,6 +21,7 @@
       <ng-container *ngIf="!loading()">Sign In</ng-container>
       <ng-container *ngIf="loading()">Loading...</ng-container>
     </button>
+    <p *ngIf="empty() && !loginForm.touched" class="input-error mt-3">Email or password cannot be emtpy</p>
     <p class="input-error bg-blue-200 text-blue-800 mt-3"><b>Info:</b> For quick sign-in, use
       <code>admin@admin.com</code>,
       <code>password</code>

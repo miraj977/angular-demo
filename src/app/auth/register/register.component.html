@@ -27,7 +27,7 @@
       class="w-full h-12 mt-2.5 text-black bg-yellow-500 rounded-sm btn" type="submit">
       <ng-container *ngIf="!loading()">Register</ng-container>
       <ng-container *ngIf="loading()">Loading...</ng-container>
-
     </button>
+    <p *ngIf="empty() && !registerForm.touched" class="input-error mt-3">Email or password cannot be emtpy</p>
   </form>
 </div>

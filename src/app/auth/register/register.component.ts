@@ -17,13 +17,25 @@ export class RegisterComponent implements OnInit {
     password: '',
     confirmPassword: '',
   };
-
-  submit() {
-    console.log(this.form);
-    this.authService.register(this.form);
-  }
+  isEmpty: boolean = false;
 
   loading() {
     return this.authService.loading();
+  }
+
+  empty() {
+    return this.isEmpty;
+  }
+
+  submit() {
+    if (
+      this.form.email === '' ||
+      this.form.password === '' ||
+      this.form.confirmPassword === ''
+    ) {
+      this.isEmpty = true;
+      return;
+    }
+    this.authService.login(this.form);
   }
 }
