@@ -12,7 +12,7 @@
               'text-yellow-600 hover:text-yellow-700 border-b-[1px] border-yellow-600': isShowCart }"
           (click)="isShowCart=!isShowCart"> Cart
           ({{getTotalItems()}})</span>
-        <button (click)="logout()" class="hover:text-yellow-400">Log out</button>
+        <button (click)="logout();isShowCart= false" class="hover:text-yellow-400">Log out</button>
       </ng-container>
 
     </div>
