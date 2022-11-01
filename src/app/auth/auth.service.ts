@@ -4,7 +4,9 @@ import {
   getAuth,
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
+  signOut,
 } from 'firebase/auth';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
@@ -14,27 +16,10 @@ export class AuthService {
   loginFailed: boolean = false;
   isLoading: boolean = false;
 
-  constructor() {}
+  constructor(private router: Router) {}
 
-  login(form: Form): boolean {
-    this.isLoading = true;
-    const auth = getAuth();
-    signInWithEmailAndPassword(auth, form.email, form.password)
-      .then((userCredential) => {
-        // Signed in
-        const user = userCredential.user;
-        this.isAuthenticated = true;
-        console.log(user);
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        console.log(errorCode, errorMessage, this.loginFailed);
-      })
-      .finally(() => {
-        this.isLoading = false;
-      });
-    return this.loginFailed;
+  loading() {
+    return this.isLoading;
   }
 
   register(form: Form) {
@@ -42,9 +27,11 @@ export class AuthService {
     const auth = getAuth();
     createUserWithEmailAndPassword(auth, form.email, form.password)
       .then((userCredential) => {
-        // Signed in
+        // Registered
         const user = userCredential.user;
         this.isAuthenticated = true;
+        this.router.navigate(['shop']);
+        localStorage.setItem('isin', '1');
         console.log(user);
       })
       .catch((error) => {
@@ -57,7 +44,39 @@ export class AuthService {
       });
   }
 
-  loading() {
-    return this.isLoading;
+  login(form: Form): boolean {
+    this.isLoading = true;
+    const auth = getAuth();
+    signInWithEmailAndPassword(auth, form.email, form.password)
+      .then((userCredential) => {
+        // Signed in
+        const user = userCredential.user;
+        this.isAuthenticated = true;
+        this.router.navigate(['shop']);
+        localStorage.setItem('isin', '1');
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorCode, errorMessage, this.loginFailed);
+      })
+      .finally(() => {
+        this.isLoading = false;
+      });
+    return this.loginFailed;
+  }
+
+  logout() {
+    const auth = getAuth();
+    signOut(auth)
+      .then(() => {
+        // Sign-out successful.
+        this.isAuthenticated = false;
+        this.router.navigate(['login']);
+        localStorage.setItem('isin', '0');
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
 }

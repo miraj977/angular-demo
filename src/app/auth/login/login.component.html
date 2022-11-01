@@ -16,10 +16,15 @@
       <p *ngIf="password.invalid && password.touched" class="input-error">Password field
         must be valid</p>
     </div>
-    <button [disabled]="loginForm.form.invalid && loginForm.form.touched"
+    <button [disabled]="(loginForm.form.invalid && loginForm.form.touched )|| loading()"
       class="w-full h-12 mt-2.5 bg-black rounded-sm btn" type="submit">
       <ng-container *ngIf="!loading()">Sign In</ng-container>
       <ng-container *ngIf="loading()">Loading...</ng-container>
     </button>
+    <p class="input-error bg-blue-200 text-blue-800 mt-3"><b>Info:</b> For quick sign-in, use
+      <code>admin@admin.com</code>,
+      <code>password</code>
+    </p>
   </form>
+
 </div>

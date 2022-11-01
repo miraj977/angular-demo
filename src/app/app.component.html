@@ -1,13 +1,20 @@
 <header>
-  <nav class="fixed top-0 w-full p-4 mb-4 text-white bg-gray-800 flex-between font-extralight">
-    <a href="/" class="text-2xl ">Bookotopia</a>
+  <nav class="fixed top-0 w-full p-4 mb-4 z-50 text-white bg-gray-800 flex-between font-extralight">
+    <a [href]="isAuthenticated()? '/shop': '/'" class="text-2xl ">Bookotopia</a>
     <div class="gap-5 flex-center">
-      <a href="/login" class="hover:text-yellow-400">Sign in</a>
-      <a href="/register" class="hover:text-yellow-400">Register</a>
-      <span [ngClass]="{'self-center cursor-pointer hover:text-gray-300':true,
-      'text-yellow-600 hover:text-yellow-700 border-b-[1px] border-yellow-600': isShowCart }"
-        (click)="isShowCart=!isShowCart"> Cart
-        ({{getTotalItems()}})</span>
+      <ng-container *ngIf="!isAuthenticated()">
+        <a href="/login" class="hover:text-yellow-400">Sign in</a>
+        <a href="/register" class="hover:text-yellow-400">Register</a>
+      </ng-container>
+      <ng-container *ngIf="isAuthenticated()">
+        <a href="/shop" class="hover:text-yellow-400">Shop</a>
+        <span [ngClass]="{'self-center cursor-pointer hover:text-gray-300':true,
+              'text-yellow-600 hover:text-yellow-700 border-b-[1px] border-yellow-600': isShowCart }"
+          (click)="isShowCart=!isShowCart"> Cart
+          ({{getTotalItems()}})</span>
+        <button (click)="logout()" class="hover:text-yellow-400">Log out</button>
+      </ng-container>
+
     </div>
   </nav>
   <ng-container *ngIf="isShowCart">
