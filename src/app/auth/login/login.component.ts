@@ -18,4 +18,7 @@ export class LoginComponent implements OnInit {
   submit() {
     this.loginFailed = this.authService.login(this.form);
   }
+  loading() {
+    return this.authService.loading();
+  }
 }

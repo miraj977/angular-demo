@@ -17,7 +17,9 @@
         must be valid</p>
     </div>
     <button [disabled]="loginForm.form.invalid && loginForm.form.touched"
-      class="w-full h-12 mt-2.5 bg-black rounded-sm btn" type="submit">Sign
-      In</button>
+      class="w-full h-12 mt-2.5 bg-black rounded-sm btn" type="submit">
+      <ng-container *ngIf="!loading()">Sign In</ng-container>
+      <ng-container *ngIf="loading()">Loading...</ng-container>
+    </button>
   </form>
 </div>

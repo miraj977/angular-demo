@@ -22,4 +22,8 @@ export class RegisterComponent implements OnInit {
     console.log(this.form);
     this.authService.register(this.form);
   }
+
+  loading() {
+    return this.authService.loading();
+  }
 }
