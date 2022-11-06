@@ -1,12 +1,16 @@
 <ng-container *ngIf="!isAuthenticated()">
-  <div class="text-white max-w-[90vh] mx-auto mt-[2rem] lg:mt-[3rem] 2xl:mt-[12rem]">
-    <p
-      class="text-[3rem] sm:text-[5rem] md:text-[6rem] lg:text-[8rem] 2xl:text-[12rem] font-bold transform -rotate-[26deg] text-center translate-y-28 font-[fantasy]">
-      Welcome to Bookoto<span class='text-yellow-500'>p</span>ia</p>
-    <p
-      class="font-extralight transform -rotate-[28deg] sm:-rotate-[30deg] mt-[40px] text-right translate-y-20 sm:translate-x-16">
-      <a href='/login' class="font-bold text-yellow-500">Sign in</a> or <a href='/register'
-        class="font-bold text-yellow-500">register</a> to continue
-    </p>
+  <div class="text-white flex-center flex-wrap gap-12 text-left min-h-[70vh]">
+    <div class="flex-1">
+      <img src='/assets/Bookotopia.png' alt='Bookotopia' class='max-w-[500px] w-full mx-auto order-2 md:order-1'
+        style='filter: drop-shadow(2px 4px 6px black);' />
+    </div>
+    <div class="flex flex-col gap-4  order-1 md:order-2 flex-1">
+      <p class="text-5xl dancing-font">
+        Welcome to Bookoto<span class='text-yellow-500'>p</span>ia</p>
+      <p class="font-extralight">
+        <a href='/login' class="text-yellow-500">Sign in</a> or <a href='/register' class="text-yellow-500">register</a>
+        to continue
+      </p>
+    </div>
   </div>
 </ng-container>
